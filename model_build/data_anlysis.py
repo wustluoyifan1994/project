@@ -10,12 +10,6 @@ import pandas as pd
 from pandas import DataFrame
 
 
-def n0(x): return sum(x == 0)
-
-
-def n1(x): return sum(x == 1)
-
-
 def calculate_overdue_rate_by_month(
         data: DataFrame, loan_date: str, y: str) -> DataFrame:
     """
