@@ -22,9 +22,9 @@ def scorecard_if_print(data, special_value=-999, special_score=0):
         bin_max = data.loc[i, "bin_max"]
         score = data.loc[i, "score"]
         if i == 0:
-            text += f"\tif {bin_min} <= {x} <= {bin_max}:\n\t\t{x}_score = {score}\n"
+            text += f"\tif {bin_min} <= {x} < {bin_max}:\n\t\t{x}_score = {score}\n"
         elif 0 < i < data.shape[0]-1:
-            text += f"\telif {bin_min} <= {x} <= {bin_max}:\n\t\t{x}_score = {score}\n"
+            text += f"\telif {bin_min} <= {x} < {bin_max}:\n\t\t{x}_score = {score}\n"
         else:
             text += f"\telif {x} >= {bin_min}:\n\t\t{x}_score = {score}\n"
         if bin_min == special_value:
