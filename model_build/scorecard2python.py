@@ -23,7 +23,7 @@ def scorecard_if_print(data, special_value=-999, special_score=0):
         score = data.loc[i, "score"]
         if i == 0:
             text += f"\tif {bin_min} <= {x} <= {bin_max}:\n\t\t{x}_score = {score}\n"
-        elif 0 < i < data.shape[0]-1:
+        elif 0 < i < data.shape[0] - 1:
             text += f"\telif {bin_min} <= {x} <= {bin_max}:\n\t\t{x}_score = {score}\n"
         else:
             text += f"\telif {x} >= {bin_min}:\n\t\t{x}_score = {score}\n"
@@ -68,12 +68,14 @@ def scorecard2python(data, special_value=-999,
 
     for x in x_list:
         data_tmp = data.loc[data["variable_no"] == x]
-        text += scorecard_if_print(data_tmp, special_value=special_value, special_score=special_score)
+        text += scorecard_if_print(data_tmp,
+                                   special_value=special_value,
+                                   special_score=special_score)
 
     text += "\tmodel_score = sum(var_score_list)\n\treturn var_score_list, model_score\n"
-
+    text = text.replace("\t", "    ")
     import os
-    file_name = model_name+".py"
+    file_name = model_name + ".py"
     if file_name in os.listdir():
         os.remove(file_name)
     with open(file_name, "w") as f:
@@ -85,11 +87,9 @@ if __name__ == '__main__':
     import re
     special_value = -999
     data = pd.read_excel("../scorecard_test.xlsx")
-
-    # data = data.loc[data["variable_no"] == "x1"]
     scorecard2python(data)
     from test import test
     input_dict = dict(zip(
         [f"x{i}" for i in range(1, 10)],
-        ["-998"]*10))
+        ["-998"] * 10))
     print(test(input_dict))
