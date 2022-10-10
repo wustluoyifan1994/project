@@ -40,6 +40,9 @@ def scorecard_if_print(data, special_value=-999, special_score=0):
     return text.replace("-inf", "0")
 
 
+
+
+
 def scorecard2python(data, special_value=-999,
                      special_score=0, model_name="test"):
     data["bin_min"] = data["bin"].apply(
