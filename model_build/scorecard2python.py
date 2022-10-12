@@ -71,7 +71,7 @@ def scorecard2python(data, special_value=-999,
         text += scorecard_if_print(data_tmp, special_value=special_value, special_score=special_score)
 
     text += "\tmodel_score = sum(var_score_list)\n\treturn var_score_list, model_score\n"
-
+    text = text.replace("\t", "    ")
     import os
     file_name = model_name+".py"
     if file_name in os.listdir():
@@ -93,4 +93,4 @@ if __name__ == '__main__':
     input_dict = dict(zip(
         [f"x{i}" for i in range(1, 10)],
         x))
-    print(test(input_dict))
+    print(sh_bigdata_model7_v1_001(input_dict))
