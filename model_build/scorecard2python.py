@@ -87,9 +87,10 @@ if __name__ == '__main__':
     data = pd.read_excel("../scorecard_test.xlsx")
 
     # data = data.loc[data["variable_no"] == "x1"]
-    scorecard2python(data)
-    from test import test
+    scorecard2python(data, model_name="sh_bigdata_model7_v1_001")
+    from sh_bigdata_model7_v1_001 import sh_bigdata_model7_v1_001
+    x = ["0.072815",	"653.0",	"863.0",	"609.0",	"0.079728",	"516.11",	"515.0",	"705.0",	"647.0"]
     input_dict = dict(zip(
         [f"x{i}" for i in range(1, 10)],
-        ["-998"]*10))
+        x))
     print(test(input_dict))
