@@ -4,3 +4,5 @@ pandas~=1.4.2
 matplotlib~=3.5.1
 joblib~=1.1.0
 scikit-learn~=1.0.2
+scorecardpy>=0.1.9.3
+optbinning>=0.15.1
